@@ -11,6 +11,7 @@
 
 ; v1, ascending + buying code
 ; v2, click randomly in a box during the downtime (instead of just sitting around doing nothing)
+; test for git
 
 GameName := "Tap Ninja"
 ^1::
