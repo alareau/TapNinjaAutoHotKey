@@ -39,7 +39,31 @@ GameName := "Tap Ninja"
     {
         MsgBox "Tap Ninja not open"
     }
-}    
+}   
+
+; used to try and push your elixier total and not have it ascend
+^2::
+{
+    if WinExist(GameName)
+    {
+        WinActivate GameName
+        ResizeWin(1345,721, GameName)
+        Loop
+        {
+            WinActivate GameName
+            BuyBuilding(1)
+            BuyAbilities(1)
+            BuyAbilities(1, 1215, 364) ; tier 13
+
+            ;
+            RandomClickingForFireFlies()
+        }
+    }        
+    Else
+    {
+        MsgBox "Tap Ninja not open"
+    }
+}  
 
 Esc::ExitApp  ; Exit script with Escape key
 
@@ -65,13 +89,13 @@ BuyBuilding(loopTimes := 10)
     }
 }
 
-BuyAbilities(loopTimes := 12)
+BuyAbilities(loopTimes := 12, coordX := 1216, coordY := 171)
 {
     Send "{2}"
     sleep 100
     Loop loopTimes
     {
-        MouseClick "left", 1216, 171
+        MouseClick "left", coordX, coordY
         sleep 500
     }        
 }
