@@ -20,19 +20,15 @@ GameName := "Tap Ninja"
     {
         WinActivate GameName
         ResizeWin(1345,721, GameName)
+
+        ; click the intial fight button while on the conquest map
+        MouseClick "left", 670, 670
+        sleep 10         
         Loop
         {
             WinActivate GameName
-            Ascend()
-            ; After ascend, more to buy so more clicks here.
-            BuyBuilding()
-            BuyAbilities()   
-            Loop 2
-            {
-                BuyBuilding(5)
-                BuyAbilities(5)
-                RandomClickingForFireFlies()
-            }
+            FightLots()
+
         }
     }        
     Else
@@ -41,40 +37,15 @@ GameName := "Tap Ninja"
     }
 }   
 
-; used to try and push your elixier total and not have it ascend
-^2::
-{
-    if WinExist(GameName)
-    {
-        WinActivate GameName
-        ResizeWin(1345,721, GameName)
-        Loop
-        {
-            WinActivate GameName
-            BuyBuilding(1)
-            BuyAbilities(1)
-            BuyAbilities(1, 1215, 364) ; tier 13
-
-            ;
-            RandomClickingForFireFlies()
-        }
-    }        
-    Else
-    {
-        MsgBox "Tap Ninja not open"
-    }
-}  
 
 Esc::ExitApp  ; Exit script with Escape key
 
-Ascend()
+FightLots()
 {
-    Send "{3}"
-    sleep 100
-    MouseClick "left", 1200, 194
-    sleep 100 
-    MouseClick "left", 1118, 507
-    sleep 100
+    MouseClick "left", 666, 600    
+    sleep 65000 
+    MouseClick "left", 670, 475
+    sleep 1000 
 }
 
 BuyBuilding(loopTimes := 10)
